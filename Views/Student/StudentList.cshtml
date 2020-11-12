@@ -1,0 +1,14 @@
+﻿@model Assignment3.Models.Student
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+<p>This page should be showing information about all students</p>
+
+
+@foreach (var student in Model)
+{
+    <div>@student.StudentFname @student.StudentLname</div>
+}
+

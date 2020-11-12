@@ -7,9 +7,7 @@ using Assignment3.Models;
 
 namespace Assignment3.Controllers
 {
-    //DISCLAIMER: This controller was created using reference material from Learning C# For Web Development Pt 11 + Pt 12
-    // LINKS: https://www.youtube.com/watch?v=uP2kH8tFXIQ&feature=youtu.be
-    // LINKS: https://www.youtube.com/watch?v=rluweOu84r0&feature=youtu.be
+
     public class TeacherController : Controller
     {
         // GET: Teacher

@@ -9,9 +9,14 @@ using System.Web.Http;
 
 namespace Assignment3.Controllers
 {
-    //DISCLAIMER: CODE CREATING USING A REFERENCE TO Learning C# For Web Development Pt11 + Pt12
+    //DISCLAIMER: 
+    //CODE CREATING USING A REFERENCE TO Learning C# For Web Development Pt11 + Pt12
+    //Original Developer: Christine Bittle
+    //Date Accessed: 11/11/2020
     //LINKS: PT 11: https://www.youtube.com/watch?v=uP2kH8tFXIQ&feature=youtu.be
     //LINKS: PT 12: https://www.youtube.com/watch?v=rluweOu84r0&feature=youtu.be
+    //Purpose of using these videos: To practice establishing a connection between a database server and c# web applications.
+    //These videos have been used to assist me in completing the requirements of Assignment 3, constructing an MVP. 
 
     public class TeacherDataController : ApiController
     {

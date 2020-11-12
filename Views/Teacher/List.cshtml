@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Assignment3.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+
+<!-- DISCLAIMER: This list was created using reference material from Learning C# For Web Development Pt 11 + 12-->
+<!-- LINKS: 11 - https://www.youtube.com/watch?v=uP2kH8tFXIQ&feature=youtu.be -->
+<!-- Links: 12 - https://www.youtube.com/watch?v=rluweOu84r0&feature=youtu.be -->
+
+<h2>List</h2>
+<p>This page should be showing information about all teachers</p>
+
+
+@foreach (var teacher in Model)
+{
+    <div><a href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFname @teacher.TeacherLname</a></div>
+}
+

@@ -7,11 +7,12 @@ namespace Assignment3.Models
 {
     public class Student
     {
-        // Defines a student
+        // Defining a student
         public int StudentId;
         public string StudentFname;
         public string StudentLname;
         public string StudentNumber;
+        public DateTime StudentEnrolDate;
 
     }
 }

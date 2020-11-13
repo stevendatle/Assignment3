@@ -21,5 +21,15 @@ namespace Assignment3.Controllers
             IEnumerable<Student> Students = controller.ListStudents();
             return View(Students);
         }
+
+
+        // GET : /Student/StudentShow/{id}
+        public ActionResult StudentShow(int id)
+        {
+            StudentDataController controller = new StudentDataController();
+            Student NewStudent = controller.FindStudent(id);
+            return View(NewStudent);
+        }
+
     }
 }

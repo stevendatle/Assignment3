@@ -1,14 +1,13 @@
-﻿@model Assignment3.Models.Student
+﻿@model IEnumerable<Assignment3.Models.Student>
 @{
     ViewBag.Title = "StudentList";
 }
 
 <h2>StudentList</h2>
 <p>This page should be showing information about all students</p>
-
-
 @foreach (var student in Model)
 {
-    <div>@student.StudentFname @student.StudentLname</div>
+    //Clicking on a student name will direct the user to StudentShow
+    <div><a href="/Student/StudentShow/@student.StudentId">@student.StudentFname @student.StudentLname </a></div>
 }
 

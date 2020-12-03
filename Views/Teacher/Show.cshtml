@@ -5,9 +5,14 @@
 }
 
 
-<a class="nav-link" href="/Teacher/List">Back To Teachers</a>
+
 <div id="containershow">
+    <nav>
+        <a class="nav-link" href="/Teacher/List">Back To Teachers</a>
+        <a class="del-link" href="/Teacher/DeleteConfirm/@Model.TeacherId">Delete</a>
+    </nav>
 <h2>@Model.TeacherFname @Model.TeacherLname</h2>
 <p>Employee Number: @Model.EmployeeNumber</p>
+    <p>Teacher since: @Model.TeacherHireDate.ToString("dd-MMM-yyyy")</p>
     </div>
 

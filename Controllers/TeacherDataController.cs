@@ -30,7 +30,8 @@ namespace Assignment3.Controllers
 
 
         [HttpGet]
-        public IEnumerable<Teacher> ListTeachers()
+        [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
+        public IEnumerable<Teacher> ListTeachers(string SearchKey=null)
         {
             //Connection
             MySqlConnection Conn = School.AccessDatabase();
@@ -43,13 +44,17 @@ namespace Assignment3.Controllers
 
 
             //SQL Query
-            cmd.CommandText = "Select * from teachers";
+            cmd.CommandText = "Select * from teachers where lower(teacherfname) like lower (@key) or lower(teacherlname) like lower (@key) or lower(concat(teacherfname, ' ', teacherlname)) like lower(@key)";
+
+            cmd.Parameters.AddWithValue("@key", "%" + SearchKey + "%");
+            cmd.Prepare();
+
 
             //Gather results of the query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
 
             //Creates an empty list of teachers
-            List<Teacher> Teachers = new List<Teacher> { };
+            List<Teacher> Teachers = new List<Teacher>{};
 
             //Loop through each row of the result set
             while (ResultSet.Read())
@@ -58,7 +63,7 @@ namespace Assignment3.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFname = (string)ResultSet["teacherfname"];
                 string TeacherLname = (string)ResultSet["teacherlname"];
-                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                string EmployeeNumber = (string)ResultSet["employeenumber"].ToString();
 
                 Teacher NewTeacher = new Teacher();
                 NewTeacher.TeacherId = TeacherId;
@@ -103,17 +108,70 @@ namespace Assignment3.Controllers
                 int TeacherId = (int)ResultSet["teacherid"];
                 string TeacherFname = (string)ResultSet["teacherfname"];
                 string TeacherLname = (string)ResultSet["teacherlname"];
-                string EmployeeNumber = (string)ResultSet["employeenumber"];
+                string EmployeeNumber = (string)ResultSet["employeenumber"].ToString();
+                DateTime TeacherHireDate = (DateTime)ResultSet["hiredate"];
 
 
                 NewTeacher.TeacherId = TeacherId;
                 NewTeacher.TeacherFname = TeacherFname;
                 NewTeacher.TeacherLname = TeacherLname;
                 NewTeacher.EmployeeNumber = EmployeeNumber;
+                NewTeacher.TeacherHireDate = TeacherHireDate;
 
             }
             return NewTeacher;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <example> POST: /api/TeacherData/DeleteTeacher/2</example>
+        [HttpPost]
+        public void DeleteTeacher(int id)
+        {
+            //Connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Opens the connection
+            Conn.Open();
+
+            //Establishing a new command query for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL Query
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+        }
+
+        [HttpPost]
+        public void AddTeacher([FromBody]Teacher NewTeacher)
+        {
+            //Connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Opens the connection
+            Conn.Open();
+
+            //Establishing a new command query for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL Query
+            cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate) values (@TeacherFname,@TeacherLname,@EmployeeNumber, CURRENT_DATE())";
+            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.TeacherLname);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", NewTeacher.EmployeeNumber);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
     }
 }

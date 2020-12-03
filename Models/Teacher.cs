@@ -14,7 +14,9 @@ namespace Assignment3.Models
         public string TeacherFname;
         public string TeacherLname;
         public string EmployeeNumber;
-
-
+        public DateTime TeacherHireDate;
+        
+        //Parameter less constructor function
+        public Teacher() { }
     }
 }

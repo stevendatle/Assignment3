@@ -15,3 +15,26 @@ select,
 textarea {
     max-width: 280px;
 }
+
+nav {
+    overflow:hidden;
+    margin-bottom:30px;
+}
+.nav-link {
+    float: left;
+}
+
+.del-link {
+    float:right;
+    color:#dd1111;
+}
+
+.delbutton {
+    display: block;
+    margin: 0 auto;
+    background-color: #dd1111;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+

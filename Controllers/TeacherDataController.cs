@@ -18,6 +18,16 @@ namespace Assignment3.Controllers
     //Purpose of using these videos: To practice establishing a connection between a database server and c# web applications.
     //These videos have been used to assist me in completing the requirements of Assignment 3, constructing an MVP. 
 
+
+    //ASSIGNMENT 4 DISCLAIMER UPDATE:
+    // Using the videos linked below, the demonstrations in the video helped me create the code for ADD, DELETE and SEARCH functionality for this assignment.
+    // LINKS: PT 13: https://www.youtube.com/watch?v=sOwP2C08WZE&feature=youtu.be
+    // LINKS: PT 14: https://www.youtube.com/watch?v=9Ic3EsoX-HA&feature=youtu.be
+    // LINKS: PT 15: https://www.youtube.com/watch?v=4jXECEDaAQE&feature=youtu.be
+    // Original Developer: Christine Bittle
+    // Date Accessed: 12/3/2020
+
+
     public class TeacherDataController : ApiController
     {
         //Taking the power of our SchoolDBContext model to allow access into our MySQL Database

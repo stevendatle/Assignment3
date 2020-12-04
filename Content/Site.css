@@ -32,9 +32,26 @@ nav {
 .delbutton {
     display: block;
     margin: 0 auto;
-    background-color: #dd1111;
+    background-color: #ff006e;
     color: #fff;
     border: 2px solid #000;
     border-radius: 3px;
 }
 
+p {
+    font-size: 16px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.delbutton:hover {
+    background-color: #ff006e;
+    color: #fff;
+    display: block;
+    border: 10px solid #000;
+    border-radius: 3px;
+}

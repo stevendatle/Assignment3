@@ -28,8 +28,10 @@ namespace Assignment3.Controllers
     // Date Accessed: 12/3/2020
 
     //ASSIGNMENT 5 DISCLAIMER UPDATE:
+    // Using the videos linked below, the videos helped me create the UPDATE functionality for my MVP.
     // https://www.youtube.com/watch?v=o1ax8rvlFMQ&feature=youtu.be
-
+    // Original Dev: CHristine Bittle
+    // Date Accessed: 12/16/2020
 
     public class TeacherDataController : ApiController
     {

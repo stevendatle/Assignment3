@@ -27,6 +27,9 @@ namespace Assignment3.Controllers
     // Original Developer: Christine Bittle
     // Date Accessed: 12/3/2020
 
+    //ASSIGNMENT 5 DISCLAIMER UPDATE:
+    // https://www.youtube.com/watch?v=o1ax8rvlFMQ&feature=youtu.be
+
 
     public class TeacherDataController : ApiController
     {
@@ -183,5 +186,32 @@ namespace Assignment3.Controllers
 
             Conn.Close();
         }
+
+        public void UpdateTeacher(int id, [FromBody]Teacher TeacherInfo)
+        {
+            //Connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Opens the connection
+            Conn.Open();
+
+            //Establishing a new command query for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //SQL Query
+            cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, employeenumber=@EmployeeNumber where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.TeacherLname);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+        }
+
+
     }
 }
